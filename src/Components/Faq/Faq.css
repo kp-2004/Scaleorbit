@@ -1,0 +1,206 @@
+/* =========================
+   SECTION
+========================= */
+.faq-section {
+  padding: 120px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.faq-container {
+  max-width: 1100px;
+  margin: auto;
+  text-align: center;
+  position: relative;
+}
+
+/* =========================
+   BADGE
+========================= */
+
+.faq-planet {
+  position: absolute;
+
+  /* Perfect vertical centering */
+  right: -140px;
+  top: 100%;
+  transform: translateY(-50%);
+
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+
+  /* Planet surface */
+  background: radial-gradient(
+    circle at 30% 25%,
+    rgba(79, 211, 162, 0.45),
+    rgba(15, 20, 22, 0.98) 70%
+  );
+
+  /* INNER depth only (no outer bleed) */
+  box-shadow:
+    inset 0 0 55px rgba(0, 0, 0, 0.9),
+    inset -14px -18px 40px rgba(79, 211, 162, 0.18);
+
+  /* Natural blend */
+  opacity: 0.9;
+  filter: blur(0.3px);
+
+  /* Fade bottom edge (planet should disappear smoothly) */
+  mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
+
+  /* Rotation */
+  animation: planetRotate 10s linear infinite;
+
+  pointer-events: none;
+}
+.faq-planet::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(79, 211, 162, 0.35),
+    transparent 70%
+  );
+
+  filter: blur(16px);
+  opacity: 0.7;
+  z-index: -1;
+}
+
+/* =========================
+   TITLE
+========================= */
+.faq-title {
+  font-size: 38px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 14px;
+}
+
+.faq-title span {
+  color: #4cd3a2;
+}
+
+.faq-subtitle {
+  color: #aab7b3;
+  max-width: 520px;
+  margin: 0 auto 60px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* =========================
+   GRID
+========================= */
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+/* =========================
+   ITEM
+========================= */
+.faq-item {
+  background: linear-gradient(
+    145deg,
+    rgba(15, 25, 25, 0.85),
+    rgba(8, 12, 12, 0.85)
+  );
+  border-radius: 16px;
+  padding: 22px 26px;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+/* Hover glow */
+.faq-item:hover {
+  border-color: rgba(76, 211, 162, 0.4);
+  box-shadow: 0 0 20px rgba(76, 211, 162, 0.15);
+}
+
+/* Active */
+.faq-item.active {
+  border-color: rgba(76, 211, 162, 0.6);
+  box-shadow: 0 0 30px rgba(76, 211, 162, 0.25);
+}
+
+/* =========================
+   QUESTION
+========================= */
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.faq-question h4 {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+  text-align: left;
+  max-width: 90%;
+}
+
+.icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4cd3a2;
+  border: 1px solid rgba(76, 211, 162, 0.4);
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.faq-item.active .icon {
+  transform: rotate(180deg);
+}
+
+/* =========================
+   ANSWER
+========================= */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.4s ease;
+  opacity: 0;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 140px;
+  opacity: 1;
+  margin-top: 14px;
+}
+
+.faq-answer p {
+  color: #cfdad7;
+  font-size: 14px;
+  line-height: 1.7;
+  text-align: left;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 900px) {
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .faq-title {
+    font-size: 30px;
+  }
+  .faq-planet{
+    display: none;
+  }
+}
