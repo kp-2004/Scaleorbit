@@ -175,4 +175,7 @@
     height: 700px;
     bottom: -280px;
   }
+  .footer-brand{
+    margin-left: 20px;
+  }
 }

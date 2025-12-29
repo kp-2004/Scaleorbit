@@ -193,7 +193,16 @@
     bottom: -65%;
   }
  .hero-content .hero-description {
-    font-size: 16px;
+  padding: 0 20px;
+    font-size: 14px;
+  }
+  .hero-content h1{
+    font-size: 24px;
+  }
+  .hero-content .btn{
+    padding: 7px 16px;
+  border-radius: 20px;
+  font-size: 12px;
   }
 }
 
