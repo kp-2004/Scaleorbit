@@ -1,5 +1,6 @@
 import React from 'react'
 import './Services.css'
+import { Link } from 'react-router-dom';
 
 const services = [
   {
@@ -53,7 +54,7 @@ const services = [
 ];
 function Services() {
   return (
-    <section className="services-section">
+    <section className="services-section" id="services">
       <div className="services-container">
 
         <span className="badge">Our Services</span>
@@ -79,9 +80,11 @@ function Services() {
                 ))}
               </ul>
 
-              <button className="service-btn">
+              <Link to="/contact"><button className="service-btn">
+                
                 Get Started →
-              </button>
+                
+              </button></Link>
             </div>
           ))}
         </div>

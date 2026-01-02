@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./Navbar.css";
 import logo from '../../assets/logo.webp'
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -14,10 +15,11 @@ const Navbar = () => {
         </div>
 
         <ul className={`nav-links ${open ? "active" : ""}`}>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Works</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#" className="nav-btn">Hiring</a></li>
+          <li><a href="#home"><Link to="/">Home</Link></a></li>
+          <li><a href="#works">Works</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#testimonial" className="nav-btn">Testimonial</a></li>
+          <li><Link to="/contact">Contact Us</Link></li>
         </ul>
 
         <button className="menu-toggle" onClick={() => setOpen(!open)}>

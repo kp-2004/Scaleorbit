@@ -35,7 +35,7 @@ function Testimonial() {
     return () => clearInterval(interval);
   }, []);
   return (
-    <section className="testimonial-section">
+    <section className="testimonial-section" id="testimonial">
       <div className="testimonial-container">
 
         <span className="badge">Testimonials</span>

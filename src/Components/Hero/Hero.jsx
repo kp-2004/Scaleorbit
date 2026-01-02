@@ -1,9 +1,10 @@
 import React from 'react'
 import './Hero.css'
+import {Link} from 'react-router-dom'
 
 function Hero() {
   return (
-    <section className="hero">
+    <section className="hero" id='home'>
       <div className="stars stars-big"></div>
 <div className="stars stars-small"></div>
 
@@ -23,10 +24,10 @@ function Hero() {
   </p>
 
   <div className="hero-buttons">
-    <a href="#quote" className="btn primary-btn">
+    <Link to="/contact" className="btn primary-btn">
       Get a Free Quote
-    </a>
-    <a href="#work" className="btn secondary-btn">
+    </Link>
+    <a href="#works" className="btn secondary-btn" >
       View Our Work
     </a>
   </div>

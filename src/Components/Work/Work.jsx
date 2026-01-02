@@ -14,7 +14,7 @@ const works = [
 
 function Work() {
   return (
-    <section className="work-section">
+    <section className="work-section" id="works">
       <div className="work-header">
         <span className="badge">Our Work</span>
 

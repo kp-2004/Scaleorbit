@@ -1,5 +1,6 @@
 import React from 'react'
 import './WhyChooseUs.css'
+import { Link } from 'react-router-dom'
 
 function WhyChooseUs() {
   return (
@@ -47,7 +48,7 @@ function WhyChooseUs() {
 
         {/* CTA */}
         <div className="choose-cta">
-          <button className="primary-btn">Start Your Project</button>
+          <Link to='/contact'><button className="primary-btn">Start Your Project</button></Link>
         </div>
 
       </div>
