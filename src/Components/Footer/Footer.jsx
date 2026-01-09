@@ -1,5 +1,5 @@
 import "./Footer.css";
-import logo from '../../assets/logo.webp'
+import logo from '../../assets/logo.png'
 
 function Footer() {
   return (
@@ -14,7 +14,7 @@ function Footer() {
         {/* LEFT */}
         <div className="footer-brand">
         
-          <div className="logo"><img src={logo} alt="logo" height={50} width={50} />
+          <div className="logo"><img src={logo} alt="logo" height={100} width={100} />
           <h2 className="brand-logo">SCALE ORBIT</h2>
           </div>
 

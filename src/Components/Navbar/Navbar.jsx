@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./Navbar.css";
-import logo from '../../assets/logo.webp'
+import logo from '../../assets/logo.png'
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
@@ -10,8 +10,7 @@ const Navbar = () => {
     <header className="navbar-wrapper">
       <nav className="navbar">
         <div className="logo">
-          <span className="logo-icon"><img src={logo} alt="logo" height={50} width={50}/></span>
-          <span>SCALE ORBIT</span>
+          <span className="logo-icon"><img src={logo} alt="logo" height={100} width={100}/></span>
         </div>
 
         <ul className={`nav-links ${open ? "active" : ""}`}>

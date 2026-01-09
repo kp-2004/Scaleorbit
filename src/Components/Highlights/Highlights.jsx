@@ -4,6 +4,7 @@ import './Highlights.css'
 function Highlights() {
   return (
     <section className="highlights-section">
+        <div className="light-sweep"></div>
   <span className="badge">Highlights</span>
 
   <h2 className="highlights-title">

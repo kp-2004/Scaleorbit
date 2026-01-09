@@ -1,6 +1,42 @@
 .highlights-section {
+  position: relative;
   padding: 120px 20px;
   text-align: center;
+  overflow: hidden;
+   z-index: 2;
+   background:
+    radial-gradient(circle at 15% 85%, rgba(79, 211, 162, 0.12), transparent 40%),
+    radial-gradient(circle at 85% 15%, rgba(79, 211, 162, 0.15), transparent 40%);
+}
+/* Grid background effects */
+.highlights-section::before,
+.highlights-section::after {
+  content: "";
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  background-image:
+    linear-gradient(rgba(79, 211, 162, 0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79, 211, 162, 0.18) 1px, transparent 1px);
+  background-size: 22px 22px;
+  opacity: 0.35;
+  filter: blur(1px);
+  z-index: 0;
+}
+
+/* Top Right Grid */
+.highlights-section::before {
+  top: -80px;
+  right: -80px;
+}
+
+/* Bottom Left Grid */
+.highlights-section::after {
+  bottom: -80px;
+  left: -80px;
+}
+.highlights-section::marker {
+  content: "";
 }
 .highlights-section .badge{
     display: inline-flex;
@@ -32,6 +68,29 @@
   gap: 30px;
   max-width: 1100px;
   margin: auto;
+}
+
+.light-sweep {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 40%,
+    rgba(79, 211, 162, 0.08),
+    transparent 60%
+  );
+  animation: sweep 8s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 /* Card */
