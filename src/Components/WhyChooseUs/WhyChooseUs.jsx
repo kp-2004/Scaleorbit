@@ -1,10 +1,23 @@
 import React from 'react'
 import './WhyChooseUs.css'
 import { Link } from 'react-router-dom'
+import aboutVideo from '../../assets/about-video2.mp4'
 
 function WhyChooseUs() {
   return (
     <section className="choose-section">
+
+      {/* Background Video */}
+            <div className="about-video-bg">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+              >
+                <source src={aboutVideo} type="video/mp4" />
+              </video>
+            </div>
       <div className="choose-container">
 
         <span className="badge">Why Choose Us</span>

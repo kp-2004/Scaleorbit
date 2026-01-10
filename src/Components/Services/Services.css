@@ -2,6 +2,36 @@
   padding: 140px 20px;
   position: relative;
   overflow: hidden;
+  text-align: center;
+  z-index: 2;
+  background:
+    radial-gradient(circle at 15% 85%, rgba(79, 211, 162, 0.12), transparent 40%),
+    radial-gradient(circle at 85% 15%, rgba(79, 211, 162, 0.15), transparent 40%);
+}
+
+.services-section::before,
+.services-section::after {
+  content: "";
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  background-image:
+    linear-gradient(rgba(79, 211, 162, 0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79, 211, 162, 0.18) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.35;
+  filter: blur(1px);
+  z-index: 0;
+}
+
+.services-section::before {
+  top: -80px;
+  right: -80px;
+}
+
+.services-section::after {
+  bottom: -80px;
+  left: -80px;
 }
 
 .services-container {
@@ -117,6 +147,40 @@
   transition: all 0.4s ease;
   animation: floatCard 3s ease-in-out infinite;
 }
+/* =========================
+   HOVER GRID OVERLAY
+========================= */
+
+.service-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(rgba(79, 211, 162, 0.35) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79, 211, 162, 0.35) 1px, transparent 1px);
+  background-size: 35px 35px;
+
+  opacity: 0;
+  filter: blur(0.6px);
+  transition: opacity 0.35s ease;
+  border-radius: 26px;
+
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Show grid only on hover */
+.service-card:hover::before {
+  opacity: 0.6;
+  animation: gridMove 4s linear infinite;
+}
+
+/* Keep content above grid */
+.service-card > * {
+  position: relative;
+  z-index: 1;
+}
 
 .service-card:hover {
   transform: translateY(-10px) scale(1.02);
@@ -159,7 +223,7 @@
 }
 
 .service-btn:hover {
-  box-shadow: 0 0 25px rgba(79, 211, 162, 0.6);
+  box-shadow: 0 0 25px rgba(209, 211, 210, 0.6);
   transform: scale(1.05);
 }
 

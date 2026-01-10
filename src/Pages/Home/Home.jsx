@@ -11,6 +11,7 @@ import Services from "../../Components/Services/Services"
 import Testimonial from "../../Components/Testimonial/Testimonial"
 import WhyChooseUs from "../../Components/WhyChooseUs/WhyChooseUs"
 import Work from "../../Components/Work/Work"
+import InstagramShowCase from '../../Components/InstagramShowCase/InstagramShowCase'
 
 function Home() {
   return (
@@ -23,6 +24,7 @@ function Home() {
    <WhyChooseUs/>
    <Role/>
    <Work/>
+   {/* <InstagramShowCase/> */}
    <Testimonial/>
    <Faq/>
    </>

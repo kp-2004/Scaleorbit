@@ -56,13 +56,13 @@ function Services() {
   return (
     <section className="services-section" id="services">
       <div className="services-container">
-
+         <div className="light-sweep"></div>
         <span className="badge">Our Services</span>
 
         <h2 className="services-title">
           Solutions That <span><i>Drive Growth</i></span>
         </h2>
-        <div className="service-planet"></div>
+        {/* <div className="service-planet"></div> */}
 
         <p className="services-subtitle">
           From design to development and growth — we build digital experiences

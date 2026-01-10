@@ -3,7 +3,46 @@
   position: relative;
   overflow: hidden;
 }
+.testimonial-section::before,
+.testimonial-section::after {
+  content: "";
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  background-image:
+    linear-gradient(rgba(79, 211, 162, 0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79, 211, 162, 0.18) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.5;
+  filter: blur(1px);
+  z-index: 0;
+}
 
+.testimonial-section::before {
+  top: -80px;
+  right: -80px;
+}
+
+.testimonial-section::after {
+  bottom: -80px;
+  left: -80px;
+}
+
+.light-sweep { 
+  position: absolute;
+   inset: 0;
+    background: linear-gradient( 120deg, transparent 40%, rgba(79, 211, 162, 0.08), transparent 60% ); 
+    animation: sweep 5s linear infinite; 
+    pointer-events: none; z-index: 1; 
+  } 
+  @keyframes sweep {
+     0% {
+       transform: translateX(-100%); 
+      }
+      100% {
+         transform: translateX(100%);
+         }
+         }
 .testimonial-container {
   max-width: 900px;
   margin: auto;

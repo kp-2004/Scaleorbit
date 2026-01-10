@@ -1,166 +1,188 @@
+/* =========================
+   BASE + GRAIN
+========================= */
+
 .results-section {
-  padding: 120px 5%;
-  color: #ffffff;
+  padding: 140px 5%;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at 30% 20%, #0f1c19, #050707 65%);
+}
+
+/* Grain overlay */
+.results-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .results-container {
   max-width: 1200px;
   margin: auto;
+  min-height: 780px;
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================
+   TEXT (TOP LEFT)
+========================= */
+
+.results-header { 
+  text-align: center;
+   margin-bottom: 80px;
+   }
+ .badge { display: inline-flex;
+  align-items: center; 
+  gap: 10px;
+   padding: 8px 18px;
+    border-radius: 30px;
+     background: rgba(79, 211, 162, 0.12); 
+     color: #4cd3a2;
+      font-size: 14px; 
+      margin-bottom: 25px;
+       box-shadow: 0 0 20px rgba(79, 211, 162, 0.4);
+       } 
+ .results-header h2 {
+   font-size: 46px; 
+  font-weight: 700;
+   line-height: 1.2; } 
+ .results-header h2 span { 
+  color: #4cd3a2; 
+}
+
+
+.results-content {
+  display: flex;
+  justify-content: left; /* centers the content horizontally */
+  width: 550px; /* limits the width of the content */
+  padding: 0 20px; /* some padding for smaller screens */
+  z-index: 2; /* above the grain overlay */
   position: relative;
 }
 
-.result-planet {
-  position: absolute;
-
-  /* Perfect vertical centering */
-  left: -130px;
-  top: 100%;
-  transform: translateY(-50%);
-
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-
-  /* Planet surface */
-  background: radial-gradient(
-    circle at 30% 25%,
-    rgba(79, 211, 162, 0.45),
-    rgba(15, 20, 22, 0.98) 70%
-  );
-
-  /* INNER depth only (no outer bleed) */
-  box-shadow:
-    inset 0 0 55px rgba(0, 0, 0, 0.9),
-    inset -14px -18px 40px rgba(79, 211, 162, 0.18);
-
-  /* Natural blend */
-  opacity: 0.9;
-  filter: blur(0.3px);
-
-  /* Fade bottom edge (planet should disappear smoothly) */
-  mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
-
-  /* Rotation */
-  animation: planetRotate 10s linear infinite;
-
-  pointer-events: none;
-  z-index: 0;
+.results-text {
+  flex: 1; /* takes full available space */
+  color: #cfd8dc; /* slightly muted text color for contrast */
+  font-size: 18px;
+  line-height: 1.8;
+  max-width: 600px; /* optional: prevent text from being too wide */
 }
-.result-planet::before {
+
+.results-text p {
+  margin-bottom: 18px;
+}
+/* =========================
+   IMAGE (HERO)
+========================= */
+
+.results-center-image {
+  position: absolute;
+  top: 59%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 620px;
+  perspective: 900px;
+  z-index: 3;
+}
+
+.results-center-image img {
+  width: 100%;
+  transition: transform 0.15s ease-out;
+  filter:
+    drop-shadow(0 50px 90px rgba(0,0,0,0.55))
+    drop-shadow(0 0 40px rgba(79,211,162,0.25));
+}
+
+/* Halo */
+.results-center-image::after {
   content: "";
   position: absolute;
-  inset: -8px;
-  border-radius: 50%;
-
-  background: radial-gradient(
-    circle,
-    rgba(79, 211, 162, 0.35),
-    transparent 70%
-  );
-
-  filter: blur(16px);
-  opacity: 0.7;
+  inset: -90px;
+  background: radial-gradient(circle, rgba(79,211,162,0.18), transparent 70%);
+  filter: blur(80px);
   z-index: -1;
 }
 
-/* Header */
-.results-header {
-  text-align: center;
-  margin-bottom: 80px;
-}
-.badge {
-    display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 18px;
-  border-radius: 30px;
-  background: rgba(79, 211, 162, 0.12);
-  color: #4cd3a2;
-  font-size: 14px;
-  margin-bottom: 25px;
-  box-shadow: 0 0 20px rgba(79, 211, 162, 0.4);
-}
-.results-header h2 {
-  font-size: 46px;
-  font-weight: 700;
-  line-height: 1.2;
+/* =========================
+   ORBITING PARTICLES
+========================= */
+
+.particle {
+  position: absolute;
+  font-size: 20px;
+  color: rgba(180,120,255,0.8);
+  animation: orbit 10s linear infinite;
 }
 
-.results-header h2 span {
-  color: #4cd3a2;
+.p1 { top: 10%; left: 50%; animation-delay: 0s; }
+.p2 { top: 50%; left: 90%; animation-delay: 2s; }
+.p3 { top: 90%; left: 40%; animation-delay: 4s; }
+.p4 { top: 40%; left: 10%; animation-delay: 6s; }
+
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(120px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(120px) rotate(-360deg); }
 }
 
-/* Content layout */
-.results-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
-}
+/* =========================
+   SLIDER
+========================= */
 
-/* Left text */
-.results-text p {
-  font-size: 17px;
-  line-height: 1.8;
-  color: #cfdad7;
-  margin-bottom: 20px;
-}
-
-/* Slider */
 .results-slider {
-  position: relative;
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  width: 520px;
   overflow: hidden;
 }
 
-/* Track animation */
 .slider-track {
   display: flex;
-  width: max-content;
   animation: slideResults 18s linear infinite;
 }
 
-/* Cards */
 .result-card {
   min-width: 220px;
   height: 120px;
-  margin: 20px;
-  border-radius: 20px;
-  background: rgba(79, 211, 162, 0.08);
+  margin: 18px;
+  border-radius: 18px;
+  background: rgba(79,211,162,0.08);
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #4cd3a2;
   font-size: 22px;
   font-weight: 600;
-  color: #4cd3a2;
-  box-shadow: 0 0 25px rgba(79, 211, 162, 0.35);
+  box-shadow: 0 0 25px rgba(79,211,162,0.3);
 }
 
-/* Animation */
 @keyframes slideResults {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
-/* Responsive */
+/* =========================
+   MOBILE
+========================= */
+
 @media (max-width: 900px) {
-  .results-content {
-    grid-template-columns: 1fr;
+  .results-center-image {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    margin: 80px auto;
+    width: 100%;
   }
 
-  .results-header h2 {
-    font-size: 36px;
-  }
-
-  .result-card {
-    min-width: 180px;
-    height: 100px;
-  }
-  .result-planet{
-    display: none;
+  .results-slider {
+    position: relative;
+    width: 100%;
+    margin-top: 40px;
   }
 }

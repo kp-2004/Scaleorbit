@@ -36,9 +36,11 @@ function Testimonial() {
   }, []);
   return (
     <section className="testimonial-section" id="testimonial">
+      <div className="light-sweep"></div>
       <div className="testimonial-container">
 
         <span className="badge">Testimonials</span>
+
 
         <div className="testimonial-planet"></div>
 

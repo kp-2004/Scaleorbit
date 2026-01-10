@@ -1,90 +1,94 @@
-import { useEffect, useState } from "react";
-import './Role.css'
-import role1 from '../../assets/role1.jpg'
-import role2 from '../../assets/role2.jpg'
-import role3 from '../../assets/role3.webp'
-import role4 from '../../assets/role4.jpg'
-import role5 from '../../assets/role5.jpg'
+import "./Role.css";
 
 const roles = [
   {
     title: "UI / UX Designer",
-    desc:
-      "We design intuitive, visually appealing interfaces that enhance user experience and maximize engagement across all devices.",
-    img: role1,
+    desc: "We design intuitive, visually appealing interfaces that enhance user experience across devices.",
   },
   {
     title: "Graphic Designer",
-    desc:
-      "Creative visuals, brand assets, and marketing designs crafted to communicate your brand story clearly and memorably.",
-    img: role2,
+    desc: "Creative brand visuals and marketing assets that communicate clearly and effectively.",
   },
   {
     title: "Web Developer",
-    desc:
-      "High-performance, scalable websites and web apps built using modern technologies with clean and maintainable code.",
-    img: role3,
+    desc: "High-performance, scalable websites built with modern technologies.",
   },
   {
     title: "Digital Marketing Executive",
-    desc:
-      "Data-driven marketing strategies that boost visibility, drive traffic, and convert users into loyal customers.",
-    img: role4,
+    desc: "Data-driven strategies that boost visibility, traffic, and conversions.",
   },
   {
     title: "Maintenance & Optimization",
-    desc:
-      "Ongoing website monitoring, speed optimization, security updates, and performance improvements for long-term success.",
-    img: role5,
+    desc: "Continuous performance optimization, security updates, and monitoring.",
+  },
+  {
+    title: "Business Automation",
+    desc: "Automated workflows that save time and increase operational efficiency.",
   },
 ];
 
-function Role() {
-    const [active, setActive] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActive((prev) => (prev + 1) % roles.length);
-    }, 3500);
-
-    return () => clearInterval(interval);
-  }, []);
-
+export default function Role() {
   return (
-     <section className="roles-section">
+    <section className="roles-section">
+      <div className="work-header">
+        <span className="badge">Our Role</span>
+
+        <h2>
+          Lorem ipsum dolor sit. <br />
+          <span><i>Momentum.</i></span>
+        </h2>
+
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi suscipit id eveniet?
+        </p>
+      </div>
+
       <div className="roles-container">
 
-        {/* LEFT CONTENT */}
-        <div className="roles-content">
-          <span className="badge">Our Expertise</span>
-          <h2>{roles[active].title}</h2>
-          <p>{roles[active].desc}</p>
-        </div>
-     
+  {/* CONNECTOR LINES */}
+  <svg className="connectors" viewBox="0 0 1400 600" preserveAspectRatio="none">
+    {/* LEFT */}
+    <line x1="250" y1="120" x2="700" y2="300" />
+    <line x1="250" y1="260" x2="700" y2="300" />
+    <line x1="250" y1="400" x2="700" y2="300" />
 
-        {/* RIGHT SLIDER */}
-        <div className="roles-slider">
-          <div
-            className="roles-track"
-            style={{ transform: `translateY(-${active * 120}px)` }}
-          >
-            {roles.map((role, index) => (
-              <div
-                key={index}
-                className={`role-card ${
-                  index === active ? "active" : ""
-                }`}
-              >
-                <img src={role.img} alt={role.title} />
-                <span>{role.title}</span>
-              </div>
-            ))}
-          </div>
-        </div>
+    {/* RIGHT */}
+    <line x1="1150" y1="120" x2="700" y2="300" />
+    <line x1="1150" y1="260" x2="700" y2="300" />
+    <line x1="1150" y1="400" x2="700" y2="300" />
+  </svg>
 
+  {/* LEFT COLUMN */}
+  <div className="roles-column">
+    {roles.slice(0, 3).map((role, i) => (
+      <div className="role-card glass" key={i}>
+        <h4>{role.title}</h4>
+        <p>{role.desc}</p>
       </div>
-    </section>
-  )
-}
+    ))}
+  </div>
 
-export default Role
+  {/* CENTER GLOBE */}
+  <div className="roles-center">
+    <div className="globe">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  {/* RIGHT COLUMN */}
+  <div className="roles-column">
+    {roles.slice(3, 6).map((role, i) => (
+      <div className="role-card glass" key={i}>
+        <h4>{role.title}</h4>
+        <p>{role.desc}</p>
+      </div>
+    ))}
+  </div>
+
+</div>
+
+    </section>
+  );
+}

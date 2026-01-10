@@ -1,5 +1,6 @@
 import { useState } from "react";
 import './Faq.css'
+import workVideo from '../../assets/work-video.mp4'
 
 const faqs = [
   {
@@ -42,6 +43,17 @@ function Faq() {
   };
   return (
     <section className="faq-section">
+       {/* Background Video */}
+                  <div className="work-video-bg">
+                    <video
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                    >
+                      <source src={workVideo} type="video/mp4" />
+                    </video>
+                  </div>
       <div className="faq-container">
 
         <span className="badge">FAQ’s</span>
