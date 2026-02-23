@@ -1,8 +1,37 @@
-body {
+
+/* ==============================
+   GLOBAL RESET FIX
+============================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;   /* 🔥 Prevent horizontal scroll */
+  width: 100%;
   background: #0b1020;
   color: white;
   font-family: Inter, sans-serif;
+    scroll-behavior: smooth;
 }
-html{
-  scroll-behavior: smooth;
+
+/* Prevent media overflow */
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Remove 100vw issues */
+section,
+div {
+  max-width: 100%;
 }
