@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Services.css'
 import { Link } from 'react-router-dom';
 
@@ -52,26 +52,49 @@ const services = [
     ],
   },
 ];
+
 function Services() {
+
+  useEffect(() => {
+    const reveals = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    reveals.forEach((el) => observer.observe(el));
+  }, []);
+
   return (
     <section className="services-section" id="services">
       <div className="services-container">
-         <div className="light-sweep"></div>
-        <span className="badge">Our Services</span>
 
-        <h2 className="services-title">
+        <div className="light-sweep"></div>
+
+        <span className="badge reveal">Our Services</span>
+
+        <h2 className="services-title reveal delay-1">
           Solutions That <span><i>Drive Growth</i></span>
         </h2>
-        {/* <div className="service-planet"></div> */}
 
-        <p className="services-subtitle">
+        <p className="services-subtitle reveal delay-2">
           From design to development and growth — we build digital experiences
           that perform, scale, and convert.
         </p>
 
         <div className="services-grid">
           {services.map((service, index) => (
-            <div className="service-card" key={index}>
+            <div 
+              className={`service-card reveal delay-${(index % 3) + 1}`} 
+              key={index}
+            >
               <h3>{service.title}</h3>
 
               <ul>
@@ -80,11 +103,11 @@ function Services() {
                 ))}
               </ul>
 
-              <Link to="/contact"><button className="service-btn">
-                
-                Get Started →
-                
-              </button></Link>
+              <Link to="/contact">
+                <button className="service-btn">
+                  Get Started →
+                </button>
+              </Link>
             </div>
           ))}
         </div>

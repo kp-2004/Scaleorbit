@@ -8,7 +8,7 @@ function Footer() {
       <div className="footer-stars"></div>
 
       {/* Planet */}
-      <div className="footer-planet"></div>
+      {/* <div className="footer-planet"></div> */}
 
       <div className="footer-container">
         {/* LEFT */}
@@ -24,9 +24,9 @@ function Footer() {
             visibility, and long-term success.
           </p>
 
-          <button className="footer-btn">
+          {/* <button className="footer-btn">
             Book Free Consultation →
-          </button>
+          </button> */}
 
           <div className="socials">
             <span>in</span>

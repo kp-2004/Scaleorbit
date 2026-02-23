@@ -1,6 +1,6 @@
-import { useState } from "react";
-import './Faq.css'
-import workVideo from '../../assets/work-video.mp4'
+import { useState, useEffect, useRef } from "react";
+import "./Faq.css";
+import workVideo from "../../assets/work-video.mp4";
 
 const faqs = [
   {
@@ -36,26 +36,40 @@ const faqs = [
 ];
 
 function Faq() {
-     const [activeIndex, setActiveIndex] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(null);
+  const [visible, setVisible] = useState(false);
+  const sectionRef = useRef(null);
 
   const toggleFAQ = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
-  return (
-    <section className="faq-section">
-       {/* Background Video */}
-                  <div className="work-video-bg">
-                    <video
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                    >
-                      <source src={workVideo} type="video/mp4" />
-                    </video>
-                  </div>
-      <div className="faq-container">
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section className="faq-section" ref={sectionRef}>
+      <div className="faq-video-bg">
+        <video autoPlay loop muted playsInline>
+          <source src={workVideo} type="video/mp4" />
+        </video>
+      </div>
+
+      <div className="faq-container">
         <span className="badge">FAQ’s</span>
 
         <h2 className="faq-title">
@@ -63,9 +77,8 @@ function Faq() {
           <span><i>Questions</i></span>
         </h2>
 
-        <div className="faq-planet"></div>
         <p className="faq-subtitle">
-          Answers to common questions about our services, process, and support.
+          Answers to common questions about our services.
         </p>
 
         <div className="faq-grid">
@@ -74,8 +87,9 @@ function Faq() {
               key={index}
               className={`faq-item ${
                 activeIndex === index ? "active" : ""
-              }`}
+              } ${visible ? "show" : ""}`}
               onClick={() => toggleFAQ(index)}
+              style={{ transitionDelay: `${index * 0.1}s` }}
             >
               <div className="faq-question">
                 <h4>{item.question}</h4>
@@ -90,10 +104,9 @@ function Faq() {
             </div>
           ))}
         </div>
-
       </div>
     </section>
-  )
+  );
 }
 
-export default Faq
+export default Faq;

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import "./Role.css";
 
 const roles = [
@@ -28,66 +29,81 @@ const roles = [
 ];
 
 export default function Role() {
+
+  useEffect(() => {
+    const reveals = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    reveals.forEach((el) => observer.observe(el));
+  }, []);
+
   return (
     <section className="roles-section">
-      <div className="work-header">
+
+      <div className="work-header reveal">
         <span className="badge">Our Role</span>
 
-        <h2>
-          Lorem ipsum dolor sit. <br />
+        <h2 className="delay-1">
+          Turning Ideas Into <br />
           <span><i>Momentum.</i></span>
         </h2>
 
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi suscipit id eveniet?
+        <p className="delay-2">
+          We combine creativity, technology, and strategy to build digital ecosystems that scale.
         </p>
       </div>
 
-      <div className="roles-container">
+      <div className="roles-container reveal delay-1">
 
-  {/* CONNECTOR LINES */}
-  <svg className="connectors" viewBox="0 0 1400 600" preserveAspectRatio="none">
-    {/* LEFT */}
-    <line x1="250" y1="120" x2="700" y2="300" />
-    <line x1="250" y1="260" x2="700" y2="300" />
-    <line x1="250" y1="400" x2="700" y2="300" />
+        <svg className="connectors">
+          <line x1="250" y1="120" x2="700" y2="300" />
+          <line x1="250" y1="260" x2="700" y2="300" />
+          <line x1="250" y1="400" x2="700" y2="300" />
+          <line x1="1150" y1="120" x2="700" y2="300" />
+          <line x1="1150" y1="260" x2="700" y2="300" />
+          <line x1="1150" y1="400" x2="700" y2="300" />
+        </svg>
 
-    {/* RIGHT */}
-    <line x1="1150" y1="120" x2="700" y2="300" />
-    <line x1="1150" y1="260" x2="700" y2="300" />
-    <line x1="1150" y1="400" x2="700" y2="300" />
-  </svg>
+        {/* LEFT */}
+        <div className="roles-column">
+          {roles.slice(0, 3).map((role, i) => (
+            <div className={`role-card glass reveal delay-${i + 1}`} key={i}>
+              <h4>{role.title}</h4>
+              <p>{role.desc}</p>
+            </div>
+          ))}
+        </div>
 
-  {/* LEFT COLUMN */}
-  <div className="roles-column">
-    {roles.slice(0, 3).map((role, i) => (
-      <div className="role-card glass" key={i}>
-        <h4>{role.title}</h4>
-        <p>{role.desc}</p>
+        {/* CENTER */}
+        <div className="roles-center reveal delay-2">
+          <div className="globe">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+
+        {/* RIGHT */}
+        <div className="roles-column">
+          {roles.slice(3, 6).map((role, i) => (
+            <div className={`role-card glass reveal delay-${i + 1}`} key={i}>
+              <h4>{role.title}</h4>
+              <p>{role.desc}</p>
+            </div>
+          ))}
+        </div>
+
       </div>
-    ))}
-  </div>
-
-  {/* CENTER GLOBE */}
-  <div className="roles-center">
-    <div className="globe">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </div>
-
-  {/* RIGHT COLUMN */}
-  <div className="roles-column">
-    {roles.slice(3, 6).map((role, i) => (
-      <div className="role-card glass" key={i}>
-        <h4>{role.title}</h4>
-        <p>{role.desc}</p>
-      </div>
-    ))}
-  </div>
-
-</div>
 
     </section>
   );

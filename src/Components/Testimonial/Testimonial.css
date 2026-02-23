@@ -192,6 +192,21 @@
   box-shadow: 0 0 12px rgba(79, 211, 162, 0.6);
 }
 
+/* ============================= */
+/* Reveal Animation */
+/* ============================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(80px);
+  transition: all 1s ease;
+}
+
+.reveal-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Mobile */
 @media (max-width: 768px) {
   .testimonial-title {
